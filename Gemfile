@@ -50,6 +50,5 @@ gem 'redcarpet'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
 # use mysql for production
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
+
