@@ -12,11 +12,13 @@ class Post < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :state, inclusion: STATES
   
-  before_save :check_publish
+  before_validation :check_publish
   
   private
   
     def check_publish
-      self.published_at = Date.today
+      if self.state == "Published"
+        self.published_at = Time.now
+      end
     end
 end
