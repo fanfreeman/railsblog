@@ -5,7 +5,9 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
 
 
 # Gems used only for assets and not required
@@ -50,5 +52,7 @@ gem 'redcarpet'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
 # use mysql for production
-gem 'mysql2'
+group :production do
+  gem 'mysql2'
+end
 
