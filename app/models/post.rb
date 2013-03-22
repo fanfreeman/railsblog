@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
   
   # validation
   STATES = [ "Draft", "Completed", "Published", "Tossed" ]
+  SELECTABLE_STATES = [ "All", "Draft", "Completed", "Published", "Tossed" ]
   validates :title, :body, presence: true
   validates :title, uniqueness: true
   validates :state, inclusion: STATES

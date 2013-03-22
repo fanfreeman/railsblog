@@ -1,5 +1,18 @@
 <h1>Listing posts</h1>
 
+<%= form_tag(posts_path, :method => 'get', :id => 'state_form') do %>
+  <label>State:</label>
+  <%= select_tag(:state, options_for_select(Post::SELECTABLE_STATES), :id=>'select_state', :prompt=>'Select a Post State') %>
+<% end %>
+
+<script type="text/javascript">
+$(window).bind("load", function() {
+  $('#select_state').change(function(){
+      $('#state_form').submit();
+  });
+});
+</script>
+
 <table>
   <tr>
     <th>Title</th>
