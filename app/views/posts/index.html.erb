@@ -7,6 +7,7 @@
     <th>State</th>
     <th>Slug</th>
     <th>Published at</th>
+    <th>Tags</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,12 @@
     <td><%= post.state %></td>
     <td><%= post.slug %></td>
     <td><%= post.published_at %></td>
+    <td>
+      <% post.tags.any? %>
+        <% post.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>

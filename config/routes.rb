@@ -8,6 +8,8 @@ Blog::Application.routes.draw do
     delete 'logout' => :destroy
   end
   
+  match 'tagged' => 'posts#tagged', :as => 'tagged'
+  
   resources :users
   resources :posts
 

@@ -45,3 +45,6 @@ gem 'will_paginate', '~> 3.0'
 
 # use this gem for processing Markdown formatted text to HTML
 gem 'redcarpet'
+
+# use this gem for tagging posts
+gem 'acts-as-taggable-on', '~> 2.3.1'

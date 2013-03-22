@@ -82,4 +82,13 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # Display posts with a specific tag
+  def tagged
+    if params[:tag].present? 
+      @posts = Post.tagged_with(params[:tag]).paginate page: params[:page], order: 'created_at desc', per_page: 5
+    else 
+      @posts = Post.paginate page: params[:page], order: 'created_at desc', per_page: 5
+    end  
+  end
 end

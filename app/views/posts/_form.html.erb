@@ -23,6 +23,10 @@
     <%= f.label :state %><br />
     <%= f.select :state, Post::STATES, prompt: 'Select a post state' %>
   </div>
+  
+  <%= f.label :tags %>
+  <%= f.text_field :tag_list %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
