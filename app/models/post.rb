@@ -6,6 +6,9 @@ class Post < ActiveRecord::Base
     new_record?
   end
   
-  validates :title, :body, :state, presence: true
+  STATES = [ "Draft", "Completed", "Published", "Tossed" ]
+  
+  validates :title, :body, presence: true
   validates :title, uniqueness: true
+  validates :state, inclusion: STATES
 end

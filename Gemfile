@@ -36,4 +36,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# use this gem for creating slug urls
 gem 'friendly_id'
+
+# use this gem for pagination
+gem 'will_paginate', '~> 3.0'

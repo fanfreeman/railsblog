@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_filter :authorize, only: [:show]
   
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.paginate page: params[:page], order: 'created_at desc', per_page: 5
 
     respond_to do |format|
       format.html # index.html.erb

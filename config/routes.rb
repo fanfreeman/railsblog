@@ -1,4 +1,5 @@
 Blog::Application.routes.draw do
+  get "blog/index"
   get "editors" => "editors/index"
   
   controller :sessions do
@@ -59,7 +60,7 @@ Blog::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'posts#index'
+  root :to => 'blog#index', as: 'blog'
 
   # See how all your routes lay out with "rake routes"
 
