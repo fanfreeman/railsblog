@@ -12,7 +12,7 @@
 
 <p>
   <b>Body:</b>
-  <%= @post.body %>
+  <%= render_markdown(@post.body) %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

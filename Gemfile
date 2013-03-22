@@ -42,3 +42,6 @@ gem 'friendly_id'
 
 # use this gem for pagination
 gem 'will_paginate', '~> 3.0'
+
+# use this gem for processing Markdown formatted text to HTML
+gem 'redcarpet'
