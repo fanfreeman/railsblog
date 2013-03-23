@@ -1,8 +1,8 @@
-<div class="depot_form">
+<div id="login_form">
   <% if flash[:alert] %>
     <p id="notice"><%= flash[:alert] %></p>
   <% end %>
-  <%= form_tag do %>
+  <%= form_tag({}, {:class => 'form login'}) do %>
     <fieldset>
       <legend>Please Log In</legend>
 

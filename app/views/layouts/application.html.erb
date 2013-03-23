@@ -8,22 +8,31 @@
 </head>
 <body class='<%= controller.controller_name %>'>
 
-<div id="header">
-  <ul>
-    <li><%= link_to 'Blog Home', blog_path %></li>
-    <% if session[:user_id] %>
-    <li><%= link_to 'Manage Posts', posts_path %></li>
-    <li><%= link_to 'Manage Editors', users_path %></li>
-    <% else %>
-    <li><%= link_to 'Editor Login', login_path %></li>
-    <% end %>
-  </ul>
-  <% if session[:user_id] %>
-  <%= button_to 'Logout', logout_path, method: :delete %>
-  <% end %>
-</div>
+  <div id="wrapper">
+    <div id="header">
+      <h1>&#91;&nbsp;freebl&#246;g&nbsp;&#93;</h1>
+    </div><!-- eof header -->
+    
+    <div id="leftcol">
+      <ul id="nav">
+        <li><%= link_to 'Blog Home', blog_path %></li>
+        <% if session[:user_id] %>
+        <li><%= link_to 'Manage Posts', posts_path %></li>
+        <li><%= link_to 'Manage Editors', users_path %></li>
+        <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to 'Editor Login', login_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- eof leftcol -->
+    
+    <div id="rightcol">
+      <%= yield %>
+    </div><!-- eof rightcol -->
+  </div>
 
-<%= yield %>
-
+  <div id="footer">
+    <div id="footer_text">Thanks for visiting.</div>
+  </div><!-- eof footer -->
 </body>
 </html>

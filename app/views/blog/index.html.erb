@@ -2,12 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Freeman's Blog</h1>
-
 <% @posts.each do |post| %>
-  <div class="entry">
-    <h3><%= link_to post.title, post %></h3>
-    <div><%= post.published_at %></div>
-    <p><%= sanitize(post.body) %></p>
+  <div class="post">
+    <h2><%= link_to post.title, post %></h2>
+    <div class="pub_date">Published at: <%= post.published_at %></div>
+    <div class="post_body"><%= sanitize(render_markdown(post.body)) %></div>
   </div>
 <% end %>

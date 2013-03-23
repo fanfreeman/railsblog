@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_filter :authorize, only: [:show]
+  skip_before_filter :authorize, only: [:show, :tagged]
   
   # GET /posts
   # GET /posts.json

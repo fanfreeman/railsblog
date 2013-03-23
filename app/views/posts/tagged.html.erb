@@ -1,39 +1,41 @@
-<h1>Listing posts</h1>
+<div id="posts">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>State</th>
-    <th>Slug</th>
-    <th>Published at</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <h1>Listing posts</h1>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= post.state %></td>
-    <td><%= post.slug %></td>
-    <td><%= post.published_at %></td>
-    <td>
-      <% post.tags.any? %>
-        <% post.tags.each do |tag| %>
-        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
-      <% end %>
-    </td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>State</th>
+      <th>Slug</th>
+      <th>Published at</th>
+      <th>Tags</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<br />
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= sanitize(post.title) %></td>
+      <td><%= post.state %></td>
+      <td><%= post.slug %></td>
+      <td><%= post.published_at %></td>
+      <td>
+        <% post.tags.any? %>
+          <% post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Show', post %></td>
+      <td><% if session[:user_id] %><%= link_to 'Edit', edit_post_path(post) %><% end %></td>
+      <td><% if session[:user_id] %><%= link_to 'Delete', post, confirm: 'Are you sure?', method: :delete %><% end %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<%= link_to 'New Post', new_post_path %>
-<p><%= will_paginate @posts %></p>
+  <br />
+
+  <%= link_to 'New Post', new_post_path %>
+  <p><%= will_paginate @posts %></p>
+  
+</div><!-- eof posts -->

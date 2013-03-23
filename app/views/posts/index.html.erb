@@ -1,52 +1,54 @@
-<h1>Listing posts</h1>
+<div id="posts">
 
-<%= form_tag(posts_path, :method => 'get', :id => 'state_form') do %>
-  <label>State:</label>
-  <%= select_tag(:state, options_for_select(Post::SELECTABLE_STATES), :id=>'select_state', :prompt=>'Select a Post State') %>
-<% end %>
+  <h1>Listing posts</h1>
 
-<script type="text/javascript">
-$(window).bind("load", function() {
-  $('#select_state').change(function(){
-      $('#state_form').submit();
+  <%= form_tag(posts_path, :method => 'get', :id => 'state_form') do %>
+    <label>State:</label>
+    <%= select_tag(:state, options_for_select(Post::SELECTABLE_STATES), :id=>'select_state', :prompt=>'Select a Post State') %>
+  <% end %>
+
+  <script type="text/javascript">
+  $(window).bind("load", function() {
+    $('#select_state').change(function(){
+        $('#state_form').submit();
+    });
   });
-});
-</script>
+  </script>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>State</th>
-    <th>Slug</th>
-    <th>Published at</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>State</th>
+      <th>Slug</th>
+      <th>Published at</th>
+      <th>Tags</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= post.state %></td>
-    <td><%= post.slug %></td>
-    <td><%= post.published_at %></td>
-    <td>
-      <% post.tags.any? %>
-        <% post.tags.each do |tag| %>
-        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
-      <% end %>
-    </td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.state %></td>
+      <td><%= post.slug %></td>
+      <td><%= post.published_at %></td>
+      <td>
+        <% post.tags.any? %>
+          <% post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Show', post %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Delete', post, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Post', new_post_path %>
-<p><%= will_paginate @posts %></p>
+  <%= link_to 'New Post', new_post_path %>
+  <p><%= will_paginate @posts %></p>
+  
+</div><!-- eof posts -->
