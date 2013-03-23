@@ -1,0 +1,13 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Freeman's Blog</h1>
+
+<% @posts.each do |post| %>
+  <div class="entry">
+    <h3><%= link_to post.title, post %></h3>
+    <div><%= post.published_at %></div>
+    <p><%= sanitize(post.body) %></p>
+  </div>
+<% end %>
