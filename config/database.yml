@@ -19,11 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  adapter: postgresql
+  encoding: unicode
   database: blog_production
   pool: 5
   username: freeman
   password: freepass
-  host: localhost
+
