@@ -34,8 +34,11 @@
   </table>
 
   <br />
-
+  
+  <% if session[:user_id] %>
   <%= link_to 'New Post', new_post_path %>
+  <% end %>
+  
   <p><%= will_paginate @posts %></p>
   
 </div><!-- eof posts -->
